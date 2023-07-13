@@ -15,12 +15,9 @@ export default function Home() {
   return (
     <Page>
       <section className="flex flex-col gap-6">
-        <Text variant="h1">Securing routes using next-auth</Text>
+        <Text variant="h1">Epic Sandbox</Text>
         <Text>
-          Wrapping our <Code>pages/_app</Code> using{' '}
-          <Code>SessionProvider</Code> from <Code>next-auth</Code> will secure
-          all our pages. If we configure sub domains or rewrites, all will be
-          behind an auth wall.
+          Applications must secure and protect the privacy of patients and their data. To help meet this objective, Epic supports using the OAuth 2.0 framework to authenticate and authorize applications.
         </Text>
       </section>
 
@@ -49,9 +46,9 @@ export default function Home() {
             <Text>Loading...</Text>
           </section>
         ) : (
-          <section className="m-auto w-fit">
-            <Button size="lg" onClick={() => signIn('github')}>
-              Sign in with GitHub
+          <section className="m-auto w-fit">  
+            <Button size="lg" onClick={() => signIn('epic-mychart')}>
+              Sign in with Epic MyChart
             </Button>
           </section>
         )}
