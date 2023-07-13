@@ -1,6 +1,6 @@
 {
   "name": "epic-sandbox",
-  "repository": "https://github.com/vercel/examples.git",
+  "repository": "https://github.com/heshanlk/epic-sandbox.git",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@vercel/examples-ui": "^1.0.5",
+    "fhir-react": "^1.0.0",
     "next": "^13.2.4",
     "next-auth": "^4.20.1",
     "react": "latest",
