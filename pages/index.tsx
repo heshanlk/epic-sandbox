@@ -28,18 +28,6 @@ export default function Home() {
           <section className="flex flex-col gap-3">
             Welcome {data?.user?.name}!{' '}
             <Button onClick={() => signOut()}>Sign out</Button>
-            <List>
-              <li>
-                <Link href="https://subdomain.solutions-subdomain-auth.vercel.sh">
-                  subdomain.solutions-subdomain-auth.vercel.sh
-                </Link>
-              </li>
-              <li>
-                <Link href="https://solutions-subdomain-auth.vercel.sh">
-                  solutions-subdomain-auth.vercel.sh
-                </Link>
-              </li>
-            </List>
           </section>
         ) : status === 'loading' ? (
           <section className="text-center">
