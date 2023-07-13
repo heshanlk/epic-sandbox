@@ -11,9 +11,9 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <Layout
-      title="Securing routes with next-auth"
-      path="solutions/subdomain-auth"
-      description="How to secure subdomains using next-auth"
+      title="Epic sandbox"
+      // path="solutions/subdomain-auth"
+      description="How to use oAuth in Epic MyChart"
     >
       <SessionProvider>
         <Component {...pageProps} />
