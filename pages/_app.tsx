@@ -12,7 +12,7 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <Layout
       title="Epic sandbox"
-      // path="solutions/subdomain-auth"
+      path="solutions/subdomain-auth"
       description="How to use oAuth in Epic MyChart"
     >
       <SessionProvider>
