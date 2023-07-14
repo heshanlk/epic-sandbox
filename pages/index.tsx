@@ -34,6 +34,11 @@ export default function Home() {
                 </Link>
               </li>
               <li>
+                <Link href="/Appointment.Search.Surgeries">
+                  Appointment.Search (Scheduled Surgeries) (R4)
+                </Link>
+              </li>
+              <li>
                 <Link href="/Observation.Search">
                   Observation.Search (Labs) (R4)
                 </Link>
@@ -66,4 +71,4 @@ export default function Home() {
   )
 }
 
-Home.Layout = Layout
+// Home.Layout = Layout

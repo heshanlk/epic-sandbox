@@ -19,10 +19,9 @@ export default function Home() {
   const [appointments, setAppointments] = useState();
 
   useEffect(() => {
-    console.log(data);
     async function fetchData() {
       // @ts-ignore
-      const appointments = await fetch(`https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4/Patient/${data?.user?.id}`, {
+      const appointments = await fetch(`https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4/Appointment?service-category=surgery&patient=${data?.user?.id}`, {
         headers: {
           "Content-Type": "application/fhir+json",
           Accept: "application/json",
@@ -45,7 +44,7 @@ export default function Home() {
   return (
     <Page>
       <section className="flex flex-col gap-6">
-        <Text variant="h1">Patient.Get</Text>
+        <Text variant="h1">Appointment.Search</Text>
       </section>
 
       <hr className="border-t border-accents-2 my-3" />
@@ -56,6 +55,7 @@ export default function Home() {
             <FhirResource
                   fhirResource={appointments}
                   fhirVersion={fhirVersions.R4}
+                  // fhirIcons={false}
                   withCarinBBProfile
                   withDaVinciPDex
                   thorough
