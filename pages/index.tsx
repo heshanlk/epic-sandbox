@@ -34,9 +34,14 @@ export default function Home() {
                 </Link>
               </li>
               <li>
-              <Link href="/Observation.Search">
-                Observation.Search (Labs) (R4)
-              </Link>
+                <Link href="/Observation.Search">
+                  Observation.Search (Labs) (R4)
+                </Link>
+              </li>
+              <li>
+                <Link href="/Practitioner.Search">
+                  Practitioner.Search (R4)
+                </Link>
               </li>
             </List>
             <hr className="border-t border-accents-2 my-3" />
