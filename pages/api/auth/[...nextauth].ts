@@ -13,7 +13,7 @@ export default NextAuth({
         url: "https://fhir.epic.com/interconnect-fhir-oauth/oauth2/authorize",
         params: { scope: "PATIENT.READ" },
       },
-      // @ts-expect-error - TODO fix this
+      // @ts-expect-error
       headers: {
         Authorization: `Basic ${Buffer.from(
           `${process.env.EPIC_MYCHART_CLIENT_ID as string}:${
@@ -38,7 +38,12 @@ export default NextAuth({
       clientId: process.env.EPIC_MYCHART_CLIENT_ID as string,
       clientSecret: process.env.EPIC_MYCHART_CLIENT_SECRET as string,
       profile(profile) {
-        return profile;
+        return {
+          id: profile.id,
+          name: profile.name.find((i: any) => i.use === "official").text,
+          email: profile.telecom.find((i: any) => i.system === "email").value,
+          image: null,
+        };
       },
     },
   ],
@@ -50,7 +55,6 @@ export default NextAuth({
         httpOnly: true,
         sameSite: "lax",
         path: "/",
-        domain: ".solutions-subdomain-auth.vercel.sh",
         secure: useSecureCookies,
       },
     },
