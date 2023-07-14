@@ -40,13 +40,35 @@ export default NextAuth({
       profile(profile) {
         return {
           id: profile.id,
-          name: profile.name.find((i: any) => i.use === "official").text,
-          email: profile.telecom.find((i: any) => i.system === "email").value,
+          name: profile.name.find((i: any) => i.use === "official")?.text,
+          email: profile.telecom.find((i: any) => i.system === "email")?.value,
           image: null,
         };
       },
     },
   ],
+  callbacks: {
+    async jwt({ token, user, account }) {
+      // Initial sign in
+      if (account && user) {
+        return {
+          accessToken: account.access_token,
+          accessTokenExpires: Date.now() + account.expires_at * 1000,
+          refreshToken: account.refresh_token,
+          user,
+        };
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      // console.log({ token });
+      // Send properties to the client, like an access_token and user id from a provider.
+      session.accessToken = token.accessToken;
+      session.user = token.user;
+      // session.user = token.profile;
+      return session;
+    },
+  },
   secret: process.env.SECRET as string,
   cookies: {
     sessionToken: {

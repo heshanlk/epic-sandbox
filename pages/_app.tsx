@@ -4,6 +4,9 @@ import type { LayoutProps } from '@vercel/examples-ui/layout'
 import { SessionProvider } from 'next-auth/react'
 import { getLayout } from '@vercel/examples-ui'
 
+import 'fhir-react/build/style.css';
+import 'fhir-react/build/bootstrap-reboot.min.css';
+
 import '@vercel/examples-ui/globals.css'
 
 function App({ Component, pageProps }: AppProps) {
