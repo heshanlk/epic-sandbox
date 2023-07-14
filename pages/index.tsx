@@ -60,7 +60,9 @@ export default function Home() {
           </section>
         ) : (
           <section className="text-center">  
-            <Text className="text-lg my-3">Please login using Epic MyChart credentials.</Text>
+            <Text className="text-lg my-3">Please login using Epic MyChart credentials. Click <Link target='_blank' href="https://fhir.epic.com/Documentation?docId=testpatients">
+                  here   
+            </Link> to access Epic MyChart Sandbox test data.</Text>
             <Button size="lg" onClick={() => signIn('epic-mychart')}>
               Sign in with Epic MyChart
             </Button>
