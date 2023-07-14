@@ -9,6 +9,7 @@ import {
   Code,
 } from '@vercel/examples-ui'
 import { useEffect, useState } from 'react'
+// @ts-ignore
 import { FhirResource, fhirVersions } from 'fhir-react';
 
 
@@ -19,16 +20,19 @@ export default function Home() {
 
   useEffect(() => {
     async function fetchData() {
+      // @ts-ignore
       const appointments = await fetch(`https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4/Observation/?patient=${data?.user?.id}&category=laboratory&_count=10`, {
         headers: {
           "Content-Type": "application/fhir+json",
           Accept: "application/json",
+          // @ts-ignore
           Authorization: `Bearer ${data?.accessToken}`,
         },
       }).then((res) => res.json());
       // console.log({appointments})
       setAppointments(appointments)
     }
+    // @ts-ignore
     if (data?.accessToken) {
       fetchData();
     }

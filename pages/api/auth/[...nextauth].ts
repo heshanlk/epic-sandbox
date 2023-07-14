@@ -25,7 +25,10 @@ export default NextAuth({
       userinfo: {
         url: "https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4/Patient",
         async request({ tokens, provider }) {
-          const url = new URL(`${provider.userinfo?.url}/${tokens.patient}`);
+          const url = new URL(
+            `https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4/Patient/${tokens.patient}`
+          );
+          // @ts-ignore
           return fetch(url, {
             headers: {
               "Content-Type": "application/fhir+json",
@@ -53,6 +56,7 @@ export default NextAuth({
       if (account && user) {
         return {
           accessToken: account.access_token,
+          // @ts-ignore
           accessTokenExpires: Date.now() + account.expires_at * 1000,
           refreshToken: account.refresh_token,
           user,
@@ -63,7 +67,9 @@ export default NextAuth({
     async session({ session, token }) {
       // console.log({ token });
       // Send properties to the client, like an access_token and user id from a provider.
+      // @ts-ignore
       session.accessToken = token.accessToken;
+      // @ts-ignore
       session.user = token.user;
       // session.user = token.profile;
       return session;
