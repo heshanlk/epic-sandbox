@@ -10,6 +10,7 @@ Welcome to the Epic Sandbox project. This project demonstrates how to use MyChar
 - [Getting Started](#getting-started)
 - [Configuration](#configuration)
 - [Usage](#usage)
+- [Demo](#demo)
 - [FHIR Implementation Examples](#fhir-implementation-examples)
 - [Contributions](#contributions)
 - [License](#license)
@@ -48,6 +49,10 @@ To get started with the Epic MyChart SSO Sandbox, follow these steps:
 ## Usage
 
 Once configured, the Epic MyChart SSO Sandbox provides a working example of integrating OAuth 2.0 authentication into a Next.js application. You can extend this sandbox to build your own application, utilizing the provided authentication flow and components.
+
+## Demo
+
+[https://epic-sandbox.vercel.app/](https://epic-sandbox.vercel.app/)
 
 ## FHIR Implementation Examples
 
