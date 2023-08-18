@@ -43,8 +43,11 @@ To get started with the Epic MyChart SSO Sandbox, follow these steps:
 
 ## Configuration
 
-1. Obtain OAuth 2.0 credentials from your [Epic MyChart developer account](https://fhir.epic.com/Documentation?docId=oauth2).
-2. Create .env file and add `EPIC_MYCHART_CLIENT_ID` and `EPIC_MYCHART_CLIENT_SECRET`
+1. To Obtain OAuth 2.0 credentials from your [Epic MyChart developer account](https://fhir.epic.com/Documentation?docId=oauth2) first create a Patient Facing App.
+2. Set redirect URI to [DOMAIN NAME]/api/auth/callback/epic-mychart
+3. Check the checkbox "Is this app a confidential client?"
+4. Check the checkbox "Does the app require persistent access?". That'll give you a refresh_token in the response.
+5. Create .env file and add `EPIC_MYCHART_CLIENT_ID` and `EPIC_MYCHART_CLIENT_SECRET`
 
 ## Usage
 
