@@ -23,26 +23,6 @@ export default function Home() {
   useEffect(() => {
     console.log({ iss, launch });
     console.log(data);
-    async function fetchData() {
-      // @ts-ignore
-      const appointments = await fetch(
-        `https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4/Patient/${data?.user?.id}`,
-        {
-          headers: {
-            "Content-Type": "application/fhir+json",
-            Accept: "application/json",
-            // @ts-ignore
-            Authorization: `Bearer ${data?.accessToken}`,
-          },
-        }
-      ).then((res) => res.json());
-      // console.log({appointments})
-      setAppointments(appointments);
-    }
-    // @ts-ignore
-    if (data?.accessToken) {
-      fetchData();
-    }
   }, [data]);
 
   console.log(appointments);
