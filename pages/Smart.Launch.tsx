@@ -22,10 +22,8 @@ export default function Home() {
 
   useEffect(() => {
     console.log({ iss, launch });
-    console.log(data);
+    console.log({ data });
   }, [data]);
-
-  console.log(appointments);
 
   return (
     <Page>
