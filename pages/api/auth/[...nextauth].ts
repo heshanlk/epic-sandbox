@@ -49,6 +49,52 @@ export default NextAuth({
         };
       },
     },
+    {
+      id: "epic-mychart-launch",
+      name: "Epic MyChart Launch",
+      type: "oauth",
+      authorization: {
+        url: "https://fhir.epic.com/interconnect-fhir-oauth/oauth2/authorize",
+        params: { scope: "launch" },
+      },
+      // @ts-expect-error
+      headers: {
+        Authorization: `Basic ${Buffer.from(
+          `${process.env.EPIC_MYCHART_CLIENT_ID_LAUNCH as string}:${
+            process.env.EPIC_MYCHART_CLIENT_SECRET_LAUNCH as string
+          }`
+        ).toString("base64")}`,
+      },
+      token: {
+        url: "https://fhir.epic.com/interconnect-fhir-oauth/oauth2/token",
+      },
+      userinfo: {
+        url: "https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4/Patient",
+        async request({ tokens, provider }) {
+          const url = new URL(
+            `https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4/Patient/${tokens.patient}`
+          );
+          // @ts-ignore
+          return fetch(url, {
+            headers: {
+              "Content-Type": "application/fhir+json",
+              Accept: "application/json",
+              Authorization: `Bearer ${tokens.access_token}`,
+            },
+          }).then((res) => res.json());
+        },
+      },
+      clientId: process.env.EPIC_MYCHART_CLIENT_ID_LAUNCH as string,
+      clientSecret: process.env.EPIC_MYCHART_CLIENT_SECRET_LAUNCH as string,
+      profile(profile) {
+        return {
+          id: profile.id,
+          name: profile.name.find((i: any) => i.use === "official")?.text,
+          email: profile.telecom.find((i: any) => i.system === "email")?.value,
+          image: null,
+        };
+      },
+    },
   ],
   callbacks: {
     async jwt({ token, user, account }) {
