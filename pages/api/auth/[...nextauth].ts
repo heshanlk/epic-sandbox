@@ -57,14 +57,6 @@ export default NextAuth({
         url: "https://fhir.epic.com/interconnect-fhir-oauth/oauth2/authorize",
         params: { scope: "launch" },
       },
-      // @ts-expect-error
-      headers: {
-        Authorization: `Basic ${Buffer.from(
-          `${process.env.EPIC_MYCHART_CLIENT_ID_LAUNCH as string}:${
-            process.env.EPIC_MYCHART_CLIENT_SECRET_LAUNCH as string
-          }`
-        ).toString("base64")}`,
-      },
       token: {
         url: "https://fhir.epic.com/interconnect-fhir-oauth/oauth2/token",
       },
