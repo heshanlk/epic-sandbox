@@ -13,7 +13,7 @@
     "@vercel/examples-ui": "^1.0.5",
     "fhir-react": "^1.0.0",
     "next": "^13.2.4",
-    "next-auth": "^4.20.1",
+    "next-auth": "^4.24.5",
     "react": "latest",
     "react-dom": "latest"
   },
